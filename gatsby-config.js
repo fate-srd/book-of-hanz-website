@@ -7,6 +7,14 @@ module.exports = {
     `gatsby-plugin-emotion`,
     `gatsby-plugin-postcss`,
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-pages`,
+        path: `${__dirname}/book-of-hanz-content`,
+      },
+    },
+    `gatsby-transformer-remark`,
+    {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
