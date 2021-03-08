@@ -9,10 +9,7 @@ const HeroWrapper = styled.header`
   display: grid;
   grid-template-columns: 1fr min-content;
   grid-template-rows: auto;
-  grid-template-areas:
-    'logo cover'
-    'dice dice'
-    ${tw`text-center text-white p-16`};
+  ${tw`text-center text-white p-16`};
 `;
 
 const CoverImage = styled.img`

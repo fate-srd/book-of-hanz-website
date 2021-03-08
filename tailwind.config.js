@@ -30,6 +30,9 @@ module.exports = {
           darker: '#0D436D',
           darkest: '#063255',
         },
+        fateGray: {
+          light: '#ccc',
+        },
       },
     },
   },

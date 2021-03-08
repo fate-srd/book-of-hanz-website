@@ -7,13 +7,14 @@ import Layout from '../components/Layout';
 const Wrapper = styled.div`
   background: white;
   margin-top: -200px;
-  padding-top: 4rem;
-  ${tw`pb-10 text-gray-600`}
+  padding-top: 150px;
+  grid-template-columns: minmax(200px, 300px) 2fr;
+  grid-template-rows: auto;
+  gap: 4rem;
+  ${tw`grid pb-10 pl-20 pr-20 text-gray-600`}
 `;
 
 const MainContent = styled.main`
-  margin-top: 4rem;
-  ${tw`px-10 pb-10 max-w-4xl mx-auto `}
   h1 {
     ${tw`text-fateBlue-dark font-bold text-4xl mt-9 mb-4`}
   }
@@ -26,7 +27,13 @@ const MainContent = styled.main`
   }
   p {
     text-indent: 2rem;
-    ${tw`leading-6 text-justify`}
+    ${tw`text-lg leading-7 text-justify`}
+  }
+  ol {
+    ${tw`list-decimal text-lg leading-7 pl-14`}
+  }
+  ul {
+    ${tw`list-disc text-lg leading-7 pl-14`}
   }
   .conversation p {
     text-indent: 0;
@@ -34,12 +41,31 @@ const MainContent = styled.main`
   }
 `;
 
+const TOCLink = tw.a`
+text-fateBlue hover:text-fateBlue-darker hover:underline 
+`;
+
 const BookOfHanz = ({ data }) => {
   const content = data.content.edges[0].node.html;
+  const toc = data.content.edges[0].node.headings;
 
   return (
     <Layout>
       <Wrapper>
+        <aside>
+          <nav tw="sticky h-screen overflow-y-auto mt-4" css={{ top: '0' }}>
+            <h2 tw="font-semibold text-2xl mt-5 border-b border-solid border-fateGray-light pb-2">
+              The Book of Hanz
+            </h2>
+            <ul tw="divide-y divide-fateGray-light">
+              {toc.map((item) => (
+                <li key={item.value} tw="py-2">
+                  <TOCLink href="#">{item.value}</TOCLink>
+                </li>
+              ))}{' '}
+            </ul>
+          </nav>
+        </aside>
         <MainContent dangerouslySetInnerHTML={{ __html: content }} />
       </Wrapper>
     </Layout>
@@ -55,6 +81,9 @@ export const query = graphql`
         node {
           html
           id
+          headings(depth: h1) {
+            value
+          }
         }
       }
     }
