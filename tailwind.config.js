@@ -28,6 +28,7 @@ module.exports = {
           DEFAULT: '#1B75BC',
           dark: '#15598F',
           darker: '#0D436D',
+          darkest: '#063255',
         },
       },
     },

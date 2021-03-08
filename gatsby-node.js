@@ -27,7 +27,7 @@ exports.createPages = ({ graphql, actions }) => {
     result.data.bookOfHanz.edges.forEach(({ node }) => {
       createPage({
         path: `read`,
-        component: path.resolve(`./src/pages/bookOfHanz.js`),
+        component: path.resolve(`./src/pages/book.js`),
         context: {
           id: node.id,
         },

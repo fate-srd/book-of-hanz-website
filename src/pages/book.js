@@ -2,11 +2,18 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { graphql } from 'gatsby';
 import tw, { styled } from 'twin.macro';
+import Layout from '../components/Layout';
 
-const Wrapper = tw.div`
-max-w-2xl mx-auto text-gray-600 px-5
+const Wrapper = styled.div`
+  background: white;
+  margin-top: -200px;
+  padding-top: 4rem;
+  ${tw`pb-10 text-gray-600`}
 `;
+
 const MainContent = styled.main`
+  margin-top: 4rem;
+  ${tw`px-10 pb-10 max-w-4xl mx-auto `}
   h1 {
     ${tw`text-fateBlue-dark font-bold text-4xl mt-9 mb-4`}
   }
@@ -31,9 +38,11 @@ const BookOfHanz = ({ data }) => {
   const content = data.content.edges[0].node.html;
 
   return (
-    <Wrapper>
-      <MainContent dangerouslySetInnerHTML={{ __html: content }} />
-    </Wrapper>
+    <Layout>
+      <Wrapper>
+        <MainContent dangerouslySetInnerHTML={{ __html: content }} />
+      </Wrapper>
+    </Layout>
   );
 };
 
