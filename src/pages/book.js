@@ -6,28 +6,41 @@ import Layout from '../components/Layout';
 
 const Wrapper = styled.div`
   background: white;
-  margin-top: -200px;
-  padding-top: 150px;
-  grid-template-columns: minmax(200px, 300px) 2fr;
-  grid-template-rows: auto;
-  gap: 4rem;
-  ${tw`grid pb-10 pl-20 pr-20 text-gray-600`}
+  ${tw`text-gray-600 p-5`}
+
+  @media only screen and (min-width: 768px) {
+    margin-top: -200px;
+    padding-top: 150px;
+    grid-template-columns: 200px 2fr;
+    grid-template-rows: auto;
+    gap: 2rem;
+  }
+  ${tw`md:grid md:pb-5 md:pl-10 md:pr-10`}
+
+  @media only screen and (min-width: 1024px) {
+    margin-top: -200px;
+    padding-top: 150px;
+    grid-template-columns: minmax(200px, 300px) 2fr;
+    grid-template-rows: auto;
+    gap: 4rem;
+  }
+  ${tw`lg:pb-10 lg:pl-20 lg:pr-20`}
 `;
 
 const MainContent = styled.main`
   h1 {
-    ${tw`text-fateBlue-dark font-bold text-4xl mt-9 mb-4`}
+    ${tw`text-fateBlue-dark font-bold text-2xl md:text-4xl mt-9 mb-4`}
   }
   h1 + p,
   h2 + p {
     text-indent: 0;
   }
   h2 {
-    ${tw`font-semibold text-2xl mt-5 mb-2`}
+    ${tw`font-semibold text-xl mt-5 mb-2`}
   }
   p {
     text-indent: 2rem;
-    ${tw`text-lg leading-7 text-justify`}
+    ${tw`md:text-lg md:leading-7 md:text-justify`}
   }
   ol {
     ${tw`list-decimal text-lg leading-7 pl-14`}
@@ -43,6 +56,11 @@ const MainContent = styled.main`
 
 const TOCLink = tw.a`
 text-fateBlue hover:text-fateBlue-darker hover:underline 
+`;
+
+const TopLink = styled.a`
+  ${tw`bg-fateBlue-dark sticky text-white px-4 py-3 uppercase font-semibold text-2xl`}
+  bottom: 0;
 `;
 
 function replacer(match, p1, p2, p3, offset, string) {
@@ -61,11 +79,17 @@ const BookOfHanz = ({ data }) => {
   const toc = data.content.edges[0].node.headings;
 
   return (
-    <Layout>
+    <Layout tw="relative">
       <Wrapper>
         <aside>
-          <nav tw="sticky h-screen overflow-y-auto mt-4" css={{ top: '0' }}>
-            <h2 tw="font-semibold text-2xl mt-5 border-b border-solid border-fateGray-light pb-2">
+          <nav
+            tw="md:sticky md:h-screen md:overflow-y-auto mt-4"
+            css={{ top: '0' }}
+          >
+            <h2
+              id="toc"
+              tw="font-semibold text-2xl mt-5 border-b border-solid border-fateGray-light pb-2"
+            >
               The Book of Hanz
             </h2>
             <ul tw="divide-y divide-fateGray-light">
@@ -91,6 +115,7 @@ const BookOfHanz = ({ data }) => {
           dangerouslySetInnerHTML={{ __html: content }}
         />
       </Wrapper>
+      <TopLink href="#toc">↑</TopLink>
     </Layout>
   );
 };
