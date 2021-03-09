@@ -45,8 +45,19 @@ const TOCLink = tw.a`
 text-fateBlue hover:text-fateBlue-darker hover:underline 
 `;
 
+function replacer(match, p1, p2, p3, offset, string) {
+  const hash = p2
+    .replace(/ /g, '-')
+    .replace(/[?,:()“”"'’*]/g, '')
+    .replace(/^-/, '')
+    .replace(/&amp;/, '')
+    .toLowerCase();
+  return `<h${p1} id="${hash}">${p2}</h${p1}>`;
+}
+
 const BookOfHanz = ({ data }) => {
-  const content = data.content.edges[0].node.html;
+  let content = data.content.edges[0].node.html;
+  content = content.replace(/<h(\d+)>([^<>]*)<\/h(\d+)>/gi, replacer);
   const toc = data.content.edges[0].node.headings;
 
   return (
@@ -60,13 +71,25 @@ const BookOfHanz = ({ data }) => {
             <ul tw="divide-y divide-fateGray-light">
               {toc.map((item) => (
                 <li key={item.value} tw="py-2">
-                  <TOCLink href="#">{item.value}</TOCLink>
+                  <TOCLink
+                    href={`#${item.value
+                      .replace(/ /g, '-')
+                      .replace(/[?,:()“”"'’*]/g, '')
+                      .replace(/^-/, '')
+                      .replace(/&amp;/, '')
+                      .toLowerCase()}`}
+                  >
+                    {item.value}
+                  </TOCLink>
                 </li>
               ))}{' '}
             </ul>
           </nav>
         </aside>
-        <MainContent dangerouslySetInnerHTML={{ __html: content }} />
+        <MainContent
+          className="main-content"
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
       </Wrapper>
     </Layout>
   );
