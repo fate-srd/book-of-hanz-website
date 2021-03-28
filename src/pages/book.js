@@ -122,9 +122,7 @@ const BookOfHanz = ({ data }) => {
 
 export const query = graphql`
   query {
-    content: allMarkdownRemark(
-      filter: { id: { eq: "7abc3cc8-23dd-5528-9877-5d582a576795" } }
-    ) {
+    content: allMarkdownRemark {
       edges {
         node {
           html
