@@ -9,11 +9,11 @@ const HeaderContainer = styled.header`
 
 const ImageWrapper = styled.div`
   background-image: url(${pattern});
-  ${tw`absolute inset-0 p-8`}
+  ${tw`absolute inset-0 p-3 md:p-8`}
 `;
 
 const Rule = tw.div`
-h-full border-2 border-white border-solid flex flex-col flex-nowrap justify-center z-10
+h-full border-2 border-white border-solid flex flex-col flex-nowrap justify-center z-10 p-3
 `;
 
 const TheBookOf = tw.h1`
@@ -74,11 +74,10 @@ const CustomForm = ({ status, message, onValidated }) => {
         Sign up to be notified when the book is available to the public.
       </p>
       <input
-        style={{ fontSize: '2em', padding: 5 }}
         ref={(node) => (email = node)}
         type="email"
         placeholder="me@email.com"
-        tw="rounded block text-gray-700 mx-auto mt-5"
+        tw="rounded block text-gray-700 mx-auto mt-5 p-5"
       />
       <button
         tw="text-gray-700 font-bold rounded bg-yellow-400 hover:bg-yellow-300 w-max px-6 py-4 mx-auto mt-5 uppercase 
