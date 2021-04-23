@@ -12,6 +12,11 @@ const HeroWrapper = styled.header`
   ${tw`text-center text-white p-16`};
 `;
 
+const BuyNow = styled.a`
+top: -250px;
+${tw`text-lg text-gray-700 font-bold rounded bg-yellow-400 hover:bg-yellow-300 w-max px-6 py-4 mx-auto mt-5 uppercase z-10 relative`}
+`
+
 const CoverImage = styled.img`
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 2.8px 2.2px 0 rgba(0, 0, 0, 0.06),
@@ -38,10 +43,13 @@ const FateDice = styled.div`
 
 const Hero = () => (
   <HeroWrapper>
-    <h1 tw="w-full h-full">
-      <Title tw="mx-auto" src={logo} alt="The Book of Hanz for the Fate RPG" />
-      <span tw="hidden">The Book of Hanz for the Fate RPG</span>
-    </h1>
+    <div>
+      <h1 tw="w-full h-full">
+        <Title tw="mx-auto" src={logo} alt="The Book of Hanz for the Fate RPG" />
+        <span tw="hidden">The Book of Hanz for the Fate RPG</span>
+      </h1>
+      <BuyNow href="#footer">Buy In Print</BuyNow>
+    </div>
     <CoverImage src={cover} alt="Cover of the Book of Hanz" />
     <FateDice>
       <img src={dice} alt="" />

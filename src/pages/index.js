@@ -80,8 +80,7 @@ const CustomForm = ({ status, message, onValidated }) => {
         tw="rounded block text-gray-700 mx-auto mt-5 p-5"
       />
       <button
-        tw="text-gray-700 font-bold rounded bg-yellow-400 hover:bg-yellow-300 w-max px-6 py-4 mx-auto mt-5 uppercase 
-"
+        tw="text-gray-700 font-bold rounded bg-yellow-400 hover:bg-yellow-300 w-max px-6 py-4 mx-auto mt-5 uppercase"
         onClick={submit}
         type="button"
       >
