@@ -9,7 +9,6 @@ const Wrapper = styled.div`
   ${tw`text-gray-600 p-5`}
 
   @media only screen and (min-width: 768px) {
-    margin-top: -200px;
     padding-top: 150px;
     grid-template-columns: 200px 2fr;
     grid-template-rows: auto;
@@ -18,7 +17,6 @@ const Wrapper = styled.div`
   ${tw`md:grid md:pb-5 md:pl-10 md:pr-10`}
 
   @media only screen and (min-width: 1024px) {
-    margin-top: -200px;
     padding-top: 150px;
     grid-template-columns: minmax(200px, 300px) 2fr;
     grid-template-rows: auto;
@@ -33,7 +31,7 @@ const MainContent = styled.main`
   }
   h1 + p,
   h2 + p {
-    text-indent: 0;
+    text-indent: 0; 
   }
   h2 {
     ${tw`font-semibold text-xl mt-5 mb-2`}
@@ -59,7 +57,7 @@ text-fateBlue hover:text-fateBlue-darker hover:underline
 `;
 
 const TopLink = styled.a`
-  ${tw`bg-fateBlue-dark sticky text-white px-4 py-3 uppercase font-semibold text-2xl`}
+  ${tw`md:hidden bg-fateBlue-dark sticky text-white px-4 py-3 uppercase font-semibold text-2xl`}
   bottom: 0;
 `;
 
