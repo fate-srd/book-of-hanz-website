@@ -1,3 +1,6 @@
 [submodule "book-of-hanz-content"]
 	path = book-of-hanz-content
 	url = git@github.com:fate-srd/book-of-hanz-content.git
+[submodule "spanish-version"]
+	path = spanish-version
+	url = https://amazingrando@github.com/fate-srd/Librodehanz2021-contenido

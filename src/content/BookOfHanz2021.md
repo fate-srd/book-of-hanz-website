@@ -1,3 +1,7 @@
+---
+language: english
+---
+
 # What is Fate?
 
 A few posts got me thinking about this, and it’s a thought that’s been in my head for a while—mostly around the whole “if you’re hacking, what are the ‘safer’ things to hack, and at what point are you mucking with the base assumptions of the system?” Like Ryan Macklin’s post, I think of Fate as being a specific game that does specific things. There are things Fate is super-awesome at, and things that Fate isn’t super-awesome at. When I want to do something that Fate isn’t super-awesome at, I tend to use a different game.

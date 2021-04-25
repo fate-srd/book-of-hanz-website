@@ -11,12 +11,12 @@ const NavPrimaryWrapper = styled.nav`
 `;
 
 const LinkStyles = css`
-  ${tw`px-5 py-2 hover:bg-fateBlue-darkest transition-all rounded mr-2`}
+  ${tw`text-base md:text-xl px-2 md:px-5 py-2 hover:bg-fateBlue-darkest transition-all rounded mr-2 whitespace-nowrap`}
 `;
 
 const NavPrimary = () => (
   <NavPrimaryWrapper className="primary-nav">
-    <ul tw="flex flex-row flex-nowrap py-3 px-5">
+    <ul tw="flex flex-row flex-nowrap py-2 md:py-3 px-2 md:px-5">
       <li>
         <Link to="/read" css={LinkStyles}>
           Book of Hanz
@@ -24,7 +24,12 @@ const NavPrimary = () => (
       </li>
       <li>
         <Link to="/apocrypha" css={LinkStyles}>
-          Apocrypha of Hanz
+          Apocrypha
+        </Link>
+      </li>
+      <li>
+        <Link to="/about" css={LinkStyles}>
+          About
         </Link>
       </li>
     </ul>

@@ -3,13 +3,14 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import tw, { styled } from 'twin.macro';
 import Layout from '../components/Layout';
+import Aside from '../components/Aside'
+import MainContent from '../utils/mainContent'
 
 const Wrapper = styled.div`
   background: white;
-  ${tw`text-gray-600 p-5`}
+  ${tw`text-gray-600 p-5 z-20 relative`}
 
   @media only screen and (min-width: 768px) {
-    padding-top: 150px;
     grid-template-columns: 200px 2fr;
     grid-template-rows: auto;
     gap: 2rem;
@@ -17,7 +18,6 @@ const Wrapper = styled.div`
   ${tw`md:grid md:pb-5 md:pl-10 md:pr-10`}
 
   @media only screen and (min-width: 1024px) {
-    padding-top: 150px;
     grid-template-columns: minmax(200px, 300px) 2fr;
     grid-template-rows: auto;
     gap: 4rem;
@@ -25,39 +25,8 @@ const Wrapper = styled.div`
   ${tw`lg:pb-10 lg:pl-20 lg:pr-20`}
 `;
 
-const MainContent = styled.main`
-  h1 {
-    ${tw`text-fateBlue-dark font-bold text-2xl md:text-4xl mt-9 mb-4`}
-  }
-  h1 + p,
-  h2 + p {
-    text-indent: 0; 
-  }
-  h2 {
-    ${tw`font-semibold text-xl mt-5 mb-2`}
-  }
-  p {
-    text-indent: 2rem;
-    ${tw`md:text-lg md:leading-7 md:text-justify`}
-  }
-  ol {
-    ${tw`list-decimal text-lg leading-7 pl-14`}
-  }
-  ul {
-    ${tw`list-disc text-lg leading-7 pl-14`}
-  }
-  .conversation p {
-    text-indent: 0;
-    ${tw`mb-2`}
-  }
-`;
-
-const TOCLink = tw.a`
-text-fateBlue hover:text-fateBlue-darker hover:underline 
-`;
-
 const TopLink = styled.a`
-  ${tw`md:hidden bg-fateBlue-dark sticky text-white px-4 py-3 uppercase font-semibold text-2xl`}
+  ${tw`md:hidden bg-fateBlue-dark sticky text-white px-4 py-3 uppercase font-semibold text-2xl z-20`}
   bottom: 0;
 `;
 
@@ -79,35 +48,7 @@ const BookOfHanz = ({ data }) => {
   return (
     <Layout tw="relative">
       <Wrapper>
-        <aside>
-          <nav
-            tw="md:sticky md:h-screen md:overflow-y-auto mt-4"
-            css={{ top: '0' }}
-          >
-            <h2
-              id="toc"
-              tw="font-semibold text-2xl mt-5 border-b border-solid border-fateGray-light pb-2"
-            >
-              The Book of Hanz
-            </h2>
-            <ul tw="divide-y divide-fateGray-light">
-              {toc.map((item) => (
-                <li key={item.value} tw="py-2">
-                  <TOCLink
-                    href={`#${item.value
-                      .replace(/ /g, '-')
-                      .replace(/[?,:()“”"'’*]/g, '')
-                      .replace(/^-/, '')
-                      .replace(/&amp;/, '')
-                      .toLowerCase()}`}
-                  >
-                    {item.value}
-                  </TOCLink>
-                </li>
-              ))}{' '}
-            </ul>
-          </nav>
-        </aside>
+        <Aside toc={toc}/>
         <MainContent
           className="main-content"
           dangerouslySetInnerHTML={{ __html: content }}
@@ -127,6 +68,9 @@ export const query = graphql`
           id
           headings(depth: h1) {
             value
+          }
+          frontmatter {
+            language
           }
         }
       }
