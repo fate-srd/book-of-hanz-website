@@ -6,12 +6,9 @@ const TOCLink = tw.a`
 text-fateBlue hover:text-fateBlue-darker hover:underline 
 `;
 
-const Aside = ({toc}) => (
+const Aside = ({ toc }) => (
   <aside>
-    <nav
-      tw="md:sticky md:h-screen md:overflow-y-auto mt-4"
-      css={{ top: '0' }}
-    >
+    <nav tw="md:sticky md:h-screen md:overflow-y-auto mt-4" css={{ top: '0' }}>
       <h2
         id="toc"
         tw="font-semibold text-2xl mt-5 border-b border-solid border-fateGray-light pb-2"
@@ -39,7 +36,7 @@ const Aside = ({toc}) => (
 );
 
 Aside.propTypes = {
-  toc: PropTypes.object,
+  toc: PropTypes.array,
 };
 
-export default Aside; 
+export default Aside;

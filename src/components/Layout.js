@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import * as React from 'react';
-import { styled } from 'twin.macro';
+import tw, { styled } from 'twin.macro';
 import Header from './Header';
 import FateHeader from './FateHeader';
 
@@ -8,6 +8,7 @@ import BackgroundImage from '../images/bkg.png';
 
 const LayoutWrapper = styled.div`
   background: url(${BackgroundImage});
+  ${tw`font-inter`}
 `;
 
 const Layout = ({ children }) => (
@@ -19,7 +20,7 @@ const Layout = ({ children }) => (
 );
 
 Layout.propTypes = {
-  children: PropTypes.array,
+  children: PropTypes.object,
 };
 
 export default Layout;
