@@ -18,7 +18,7 @@ const NavPrimary = () => (
   <NavPrimaryWrapper className="primary-nav">
     <ul tw="flex flex-row flex-nowrap py-2 md:py-3 px-2 md:px-5">
       <li>
-        <Link to="/read" css={LinkStyles}>
+        <Link to="/" css={LinkStyles}>
           Book of Hanz
         </Link>
       </li>
