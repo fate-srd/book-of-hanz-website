@@ -14,13 +14,5 @@ module.exports = {
       },
     },
     `gatsby-transformer-remark`,
-    {
-      resolve: 'gatsby-plugin-web-font-loader',
-      options: {
-        google: {
-          families: ['Inter'],
-        },
-      },
-    },
   ],
 };

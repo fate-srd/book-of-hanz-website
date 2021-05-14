@@ -7,11 +7,6 @@ import Aside from '../components/Aside';
 import MainContent from '../utils/mainContent';
 import Wrapper from '../components/Wrapper';
 
-const TopLink = styled.a`
-  ${tw`md:hidden bg-fateBlue-dark sticky text-white px-4 py-3 uppercase font-semibold text-2xl z-20`}
-  bottom: 0;
-`;
-
 function replacer(match, p1, p2, p3, offset, string) {
   const hash = p2
     .replace(/ /g, '-')
@@ -21,6 +16,11 @@ function replacer(match, p1, p2, p3, offset, string) {
     .toLowerCase();
   return `<h${p1} id="${hash}">${p2}</h${p1}>`;
 }
+
+const TopLink = styled.a`
+  ${tw`md:hidden bg-fateBlue-dark fixed text-white px-4 py-3 uppercase font-semibold text-2xl z-50`}
+  bottom: 0;
+`;
 
 const BookOfHanz = ({ data }) => {
   let content = data.content.edges[0].node.html;
