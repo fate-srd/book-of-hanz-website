@@ -3,8 +3,8 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import tw, { styled } from 'twin.macro';
 import Layout from '../components/Layout';
-import Aside from '../components/Aside'
-import MainContent from '../utils/mainContent'
+import Aside from '../components/Aside';
+import MainContent from '../utils/mainContent';
 
 const Wrapper = styled.div`
   background: white;
@@ -48,7 +48,7 @@ const BookOfHanz = ({ data }) => {
   return (
     <Layout tw="relative">
       <Wrapper>
-        <Aside toc={toc}/>
+        <Aside toc={toc} />
         <MainContent
           className="main-content"
           dangerouslySetInnerHTML={{ __html: content }}
@@ -60,8 +60,15 @@ const BookOfHanz = ({ data }) => {
 };
 
 export const query = graphql`
-  query {
-    content: allMarkdownRemark {
+  {
+    content: allMarkdownRemark(
+      filter: {
+        frontmatter: {
+          title: { eq: "Book of Hanz" }
+          language: { eq: "english" }
+        }
+      }
+    ) {
       edges {
         node {
           html

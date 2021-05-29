@@ -7,3 +7,57 @@
 html {
   scroll-behavior: smooth;
 }
+
+h1 + div > div:not(.main-content) {
+  @apply mb-5
+}
+
+.main-content-google-plus {
+  @apply mb-5 mt-5 pb-5 
+}
+
+[itemprop="audience"],
+.plus-oners {
+  @apply text-sm
+}
+
+.author-photo {
+  @apply hidden
+}
+
+.post-activity {
+  @apply mb-5 pb-5 text-sm font-bold
+}
+
+.post-activity a {
+  @apply font-normal
+}
+
+.comments {
+  @apply mb-5 p-5 pb-2 bg-gray-100
+}
+
+.comment {
+  @apply mb-5 pb-5 border-b-2 border-gray-200
+}
+
+.comment {
+  @apply text-sm
+}
+
+.comment [itemprop="author"] {
+  @apply text-fateBlue
+}
+
+.comment-content {
+  @apply mt-3 text-base
+}
+
+/* No links */
+.main-content-google-plus,
+.comments,
+.post-activity,
+[itemprop="audience"],
+.plus-oners {
+  pointer-events: none;
+}

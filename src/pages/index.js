@@ -42,8 +42,15 @@ const BookOfHanz = ({ data }) => {
 };
 
 export const query = graphql`
-  query {
-    content: allMarkdownRemark {
+  {
+    content: allMarkdownRemark(
+      filter: {
+        frontmatter: {
+          title: { eq: "Book of Hanz" }
+          language: { eq: "english" }
+        }
+      }
+    ) {
       edges {
         node {
           html
