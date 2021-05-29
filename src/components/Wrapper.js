@@ -24,7 +24,7 @@ const WrapperDiv = styled.div`
 const Wrapper = ({ children }) => <WrapperDiv>{children}</WrapperDiv>;
 
 Wrapper.propTypes = {
-  children: PropTypes.object,
+  children: PropTypes.array,
 };
 
 export default Wrapper;

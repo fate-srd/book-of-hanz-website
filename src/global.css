@@ -46,18 +46,13 @@ h1 + div > div:not(.main-content) {
 }
 
 .comment [itemprop="author"] {
-  @apply text-fateBlue
+  @apply font-bold
 }
 
 .comment-content {
   @apply mt-3 text-base
 }
 
-/* No links */
-.main-content-google-plus,
-.comments,
-.post-activity,
-[itemprop="audience"],
-.plus-oners {
-  pointer-events: none;
+a {
+  @apply text-blue-500
 }

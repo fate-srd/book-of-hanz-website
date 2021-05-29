@@ -11,7 +11,7 @@ const NavPrimaryWrapper = styled.nav`
 `;
 
 const LinkStyles = css`
-  ${tw`text-base md:text-xl px-2 md:px-5 py-2 hover:bg-fateBlue-darkest transition-all rounded mr-2 whitespace-nowrap`}
+  ${tw`text-base text-white md:text-xl px-2 md:px-5 py-2 hover:bg-fateBlue-darkest transition-all rounded mr-2 whitespace-nowrap`}
 `;
 
 const NavPrimary = () => (
