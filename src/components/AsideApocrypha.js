@@ -17,7 +17,8 @@ const SidebarList = ({ category, sectionTitle, toc }) => (
         const title = absPathArray[absPathArray.length - 1]
           .replace(/-/g, ' ')
           .replace(/_/g, '’');
-        console.log(`title is ${title}`);
+        console.log(`absPathArray[0] is ${absPathArray[0]}`);
+        console.log(`category is ${category}`);
         const slug = `/apocrypha/${absPathArray[absPathArray.length - 1]}`;
         if (absPathArray[0] === category) {
           return (
