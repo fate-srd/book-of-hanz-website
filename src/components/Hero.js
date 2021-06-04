@@ -60,7 +60,7 @@ const Hero = () => (
       </Title>
       <Links>
         <li>
-          <Button href="https://fate-srd.com/store">Buy Book</Button>
+          <Button href="https://fate-srd.com/store">Buy the Book</Button>
         </li>
       </Links>
     </Box>

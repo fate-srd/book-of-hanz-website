@@ -38,7 +38,7 @@ exports.createPages = ({ graphql, actions }) => {
 
       createPage({
         path: `apocrypha/${title}`,
-        component: path.resolve(`./src/pages/apocrypha.js`),
+        component: path.resolve(`./src/pages/apocryphaPages.js`),
         context: {
           id: node.id,
         },

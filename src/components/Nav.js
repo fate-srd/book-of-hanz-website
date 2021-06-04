@@ -23,7 +23,10 @@ const NavPrimary = () => (
         </Link>
       </li>
       <li>
-        <Link to="/apocrypha" css={LinkStyles}>
+        <Link
+          to="/apocrypha/20130204-Justa-random-thought_One-of-the-thin"
+          css={LinkStyles}
+        >
           Apocrypha
         </Link>
       </li>

@@ -1,6 +1,42 @@
 import PropTypes from 'prop-types';
 import * as React from 'react';
 import { Link } from 'gatsby';
+import tw from 'twin.macro';
+
+const SidebarList = ({ category, sectionTitle, toc }) => {
+  console.log(category);
+  return (
+    <div>
+      <h3 tw="font-semibold text-xl mt-5 pb-2">{sectionTitle}</h3>
+      <ul tw="divide-y divide-fateGray-light">
+        {toc.map((item) => {
+          const trimmedPath = item.node.fileAbsolutePath.replace(
+            '/Users/oest/Documents/Sites/ar/book-of-hanz/src/content/apocrypha/',
+            ''
+          );
+          const absPathArray = trimmedPath.replace('.md', '').split('/');
+          const title = absPathArray[absPathArray.length - 1]
+            .replace(/-/g, ' ')
+            .replace(/_/g, '’');
+          const slug = `/apocrypha/${absPathArray[absPathArray.length - 1]}`;
+          if (absPathArray[0] === category) {
+            return (
+              <li key={title} tw="py-2">
+                <Link
+                  to={slug}
+                  className="text-fateBlue hover:text-fateBlue-darker hover:underline"
+                >
+                  {title}...
+                </Link>
+              </li>
+            );
+          }
+          return null;
+        })}
+      </ul>
+    </div>
+  );
+};
 
 const AsideApocrypha = ({ toc }) => (
   <aside>
@@ -11,33 +47,24 @@ const AsideApocrypha = ({ toc }) => (
       >
         Apocrypha of Hanz
       </h2>
-      <ul tw="divide-y divide-fateGray-light">
-        {toc.map((item) => {
-          const absPathArray = item.node.fileAbsolutePath
-            .replace('.md', '')
-            .split('/');
-          const title = absPathArray[absPathArray.length - 1]
-            .replace(/-/g, ' ')
-            .replace(/_/g, '’');
-          const slug = `/apocrypha/${absPathArray[absPathArray.length - 1]}`;
-          return (
-            <li key={title} tw="py-2">
-              <Link
-                to={slug}
-                className="text-fateBlue hover:text-fateBlue-darker hover:underline"
-              >
-                {title}...
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+      <SidebarList
+        category="TotD"
+        sectionTitle="Thought of the Day"
+        toc={toc}
+      />
+      <SidebarList category="fate" sectionTitle="Fate Posts" toc={toc} />
     </nav>
   </aside>
 );
 
 AsideApocrypha.propTypes = {
   toc: PropTypes.array,
+};
+
+SidebarList.propTypes = {
+  toc: PropTypes.array,
+  category: PropTypes.string,
+  sectionTitle: PropTypes.string,
 };
 
 export default AsideApocrypha;
