@@ -1,6 +1,10 @@
 module.exports = {
   siteMetadata: {
-    title: 'book-of-hanz',
+    title: `Book of Hanz`,
+    description: `The Book of Hanz unlocks the code to better Fate games than you ever imagined.`,
+    author: `@amazingrando`,
+    sharingImage: `https://bookofhanz.com/sharing.jpg`,
+    siteUrl: `https://bookofhanz.com`,
   },
   plugins: [
     'gatsby-plugin-react-helmet',

@@ -6,6 +6,7 @@ import Layout from '../components/Layout';
 import Aside from '../components/Aside';
 import MainContent from '../utils/mainContent';
 import Wrapper from '../components/Wrapper';
+import SEO from '../components/Seo';
 
 function replacer(match, p1, p2, p3, offset, string) {
   const hash = p2
@@ -29,6 +30,7 @@ const BookOfHanz = ({ data }) => {
 
   return (
     <Layout tw="relative">
+      <SEO title="Read the Book" />
       <Wrapper>
         <Aside toc={toc} />
         <MainContent

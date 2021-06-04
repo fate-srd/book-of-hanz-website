@@ -5,6 +5,7 @@ import Layout from '../components/Layout';
 import AsideApocrypha from '../components/AsideApocrypha';
 import MainContent from '../utils/mainContent';
 import Wrapper from '../components/Wrapper';
+import SEO from '../components/Seo';
 
 const Apocrypha = ({ data }) => {
   const content = data.allMarkdownRemark.edges[0].node.html;
@@ -18,6 +19,7 @@ const Apocrypha = ({ data }) => {
 
   return (
     <Layout>
+      <SEO title="Apocrypha" />
       <Wrapper>
         <AsideApocrypha toc={toc} />
         <MainContent

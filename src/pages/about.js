@@ -2,9 +2,11 @@ import React from 'react';
 import Layout from '../components/Layout';
 import MainContent from '../utils/mainContent';
 import Wrapper1Col from '../components/Wrapper1Col';
+import SEO from '../components/Seo';
 
 const About = () => (
   <Layout>
+    <SEO title="About" />
     <Wrapper1Col>
       <MainContent>
         <h1 tw="text-fateBlue-dark font-bold text-2xl md:text-4xl mt-9 mb-4">
