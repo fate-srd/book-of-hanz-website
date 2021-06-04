@@ -5,9 +5,12 @@ import tw from 'twin.macro';
 
 const SidebarList = ({ category, sectionTitle, toc }) => (
   <div>
+    {console.log(toc)}
     <h3 tw="font-semibold text-xl mt-5 pb-2">{sectionTitle}</h3>
     <ul tw="divide-y divide-fateGray-light">
       {toc.map((item) => {
+        console.log(`item is ${item}`);
+
         const trimmedPath = item.node.fileAbsolutePath.replace(
           '/Users/oest/Documents/Sites/ar/book-of-hanz/src/content/apocrypha/',
           ''
