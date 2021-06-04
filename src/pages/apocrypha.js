@@ -33,7 +33,7 @@ const Apocrypha = ({ data }) => {
 };
 
 export const query = graphql`
-  query($id: String!) {
+  query($id: String) {
     allMarkdownRemark(
       filter: {
         frontmatter: {
@@ -65,6 +65,7 @@ export const query = graphql`
       edges {
         node {
           fileAbsolutePath
+          id
         }
       }
     }

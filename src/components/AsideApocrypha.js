@@ -3,40 +3,37 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 import tw from 'twin.macro';
 
-const SidebarList = ({ category, sectionTitle, toc }) => {
-  console.log(category);
-  return (
-    <div>
-      <h3 tw="font-semibold text-xl mt-5 pb-2">{sectionTitle}</h3>
-      <ul tw="divide-y divide-fateGray-light">
-        {toc.map((item) => {
-          const trimmedPath = item.node.fileAbsolutePath.replace(
-            '/Users/oest/Documents/Sites/ar/book-of-hanz/src/content/apocrypha/',
-            ''
+const SidebarList = ({ category, sectionTitle, toc }) => (
+  <div>
+    <h3 tw="font-semibold text-xl mt-5 pb-2">{sectionTitle}</h3>
+    <ul tw="divide-y divide-fateGray-light">
+      {toc.map((item) => {
+        const trimmedPath = item.node.fileAbsolutePath.replace(
+          '/Users/oest/Documents/Sites/ar/book-of-hanz/src/content/apocrypha/',
+          ''
+        );
+        const absPathArray = trimmedPath.replace('.md', '').split('/');
+        const title = absPathArray[absPathArray.length - 1]
+          .replace(/-/g, ' ')
+          .replace(/_/g, '’');
+        const slug = `/apocrypha/${absPathArray[absPathArray.length - 1]}`;
+        if (absPathArray[0] === category) {
+          return (
+            <li key={title} tw="py-2">
+              <Link
+                to={slug}
+                className="text-fateBlue hover:text-fateBlue-darker hover:underline"
+              >
+                {title}...
+              </Link>
+            </li>
           );
-          const absPathArray = trimmedPath.replace('.md', '').split('/');
-          const title = absPathArray[absPathArray.length - 1]
-            .replace(/-/g, ' ')
-            .replace(/_/g, '’');
-          const slug = `/apocrypha/${absPathArray[absPathArray.length - 1]}`;
-          if (absPathArray[0] === category) {
-            return (
-              <li key={title} tw="py-2">
-                <Link
-                  to={slug}
-                  className="text-fateBlue hover:text-fateBlue-darker hover:underline"
-                >
-                  {title}...
-                </Link>
-              </li>
-            );
-          }
-          return null;
-        })}
-      </ul>
-    </div>
-  );
-};
+        }
+        return null;
+      })}
+    </ul>
+  </div>
+);
 
 const AsideApocrypha = ({ toc }) => (
   <aside>

@@ -34,7 +34,6 @@ exports.createPages = ({ graphql, actions }) => {
       const absPath = node.fileAbsolutePath;
       const absPathArray = absPath.replace('.md', '').split('/');
       const title = absPathArray[absPathArray.length - 1];
-
       createPage({
         path: `apocrypha/${title}`,
         component: path.resolve(`./src/pages/apocrypha.js`),
