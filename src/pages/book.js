@@ -48,7 +48,11 @@ const BookOfHanz = ({ data }) => {
   return (
     <Layout tw="relative">
       <Wrapper>
-        <Aside toc={toc} />
+        <Aside
+          toc={toc}
+          languageURL="/spanish"
+          languageText="Read in Spanish"
+        />
         <MainContent
           className="main-content"
           dangerouslySetInnerHTML={{ __html: content }}
