@@ -9,8 +9,6 @@ const SidebarList = ({ category, sectionTitle, toc }) => (
     <h3 tw="font-semibold text-xl mt-5 pb-2">{sectionTitle}</h3>
     <ul tw="divide-y divide-fateGray-light">
       {toc.map((item) => {
-        console.log(`item is ${item}`);
-
         const trimmedPath = item.node.fileAbsolutePath.replace(
           '/Users/oest/Documents/Sites/ar/book-of-hanz/src/content/apocrypha/',
           ''
@@ -19,6 +17,7 @@ const SidebarList = ({ category, sectionTitle, toc }) => (
         const title = absPathArray[absPathArray.length - 1]
           .replace(/-/g, ' ')
           .replace(/_/g, '’');
+        console.log(`title is ${title}`);
         const slug = `/apocrypha/${absPathArray[absPathArray.length - 1]}`;
         if (absPathArray[0] === category) {
           return (
