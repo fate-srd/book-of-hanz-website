@@ -37,6 +37,7 @@ const SidebarList = ({ category, sectionTitle, toc }) => (
 
 const AsideApocrypha = ({ toc }) => (
   <aside>
+    {console.log(toc)}
     <nav tw="md:sticky md:h-screen md:overflow-y-auto mt-4" css={{ top: '0' }}>
       <h2
         id="toc"
