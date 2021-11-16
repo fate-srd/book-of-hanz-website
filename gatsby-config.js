@@ -25,6 +25,16 @@ module.exports = {
         path: `${__dirname}/src/content/apocrypha/fate`,
       },
     },
+    {
+      resolve: `gatsby-plugin-umami`,
+      options: {
+        websiteId: '3a735553-6f11-4f6d-9877-1e688ae43c2a',
+        srcUrl: 'https://umami-amazingrando.herokuapp.com/umami.js',
+        includeInDevelopment: false,
+        autoTrack: true,
+        respectDoNotTrack: true,
+      },
+    },
     `gatsby-transformer-remark`,
   ],
 };
