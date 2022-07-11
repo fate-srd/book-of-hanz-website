@@ -35,6 +35,11 @@ const NavPrimary = () => (
           About
         </Link>
       </li>
+      <li>
+        <Link to="/licensing" css={LinkStyles}>
+          Licensing
+        </Link>
+      </li>
     </ul>
   </NavPrimaryWrapper>
 );
