@@ -35,6 +35,13 @@ module.exports = {
         respectDoNotTrack: true,
       },
     },
+    {
+      resolve: 'gatsby-plugin-fathom',
+      options: {
+        siteId: 'QXXIVNKO',
+        honorDnt: true,
+      },
+    },
     `gatsby-transformer-remark`,
   ],
 };
