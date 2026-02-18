@@ -3,25 +3,32 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 import tw from 'twin.macro';
 
-const SidebarList = ({ category, sectionTitle, toc }) => (
-  <div>
-    <h3 tw="font-semibold text-xl mt-5 pb-2">{sectionTitle}</h3>
-    <ul tw="divide-y divide-fateGray-light">
-      {toc.map((item) => {
-        let trimmedPath = item.node.fileAbsolutePath.replace(
-          '/Users/oest/Documents/Sites/ar/book-of-hanz/src/content/apocrypha/',
-          ''
-        );
-        trimmedPath = trimmedPath.replace(
-          '/opt/build/repo/src/content/apocrypha/',
-          ''
-        );
-        const absPathArray = trimmedPath.replace('.md', '').split('/');
-        const title = absPathArray[absPathArray.length - 1]
-          .replace(/-/g, ' ')
-          .replace(/_/g, '’');
-        const slug = `/apocrypha/${absPathArray[absPathArray.length - 1]}`;
-        if (absPathArray[0] === category) {
+const SidebarList = ({ category, sectionTitle, toc }) => {
+  const apocryphaRoot = '/src/content/apocrypha/';
+
+  return (
+    <div>
+      <h3 tw="font-semibold text-xl mt-5 pb-2">{sectionTitle}</h3>
+      <ul tw="divide-y divide-fateGray-light">
+        {toc.map((item) => {
+          const { fileAbsolutePath } = item.node;
+          const splitPath = fileAbsolutePath.split(apocryphaRoot);
+
+          if (splitPath.length < 2) {
+            return null;
+          }
+
+          const trimmedPath = splitPath[1];
+          const absPathArray = trimmedPath.replace('.md', '').split('/');
+          const title = absPathArray[absPathArray.length - 1]
+            .replace(/-/g, ' ')
+            .replace(/_/g, '’');
+          const slug = `/apocrypha/${absPathArray[absPathArray.length - 1]}`;
+
+          if (absPathArray[0] !== category) {
+            return null;
+          }
+
           return (
             <li key={title} tw="py-2">
               <Link
@@ -32,16 +39,14 @@ const SidebarList = ({ category, sectionTitle, toc }) => (
               </Link>
             </li>
           );
-        }
-        return null;
-      })}
-    </ul>
-  </div>
-);
+        })}
+      </ul>
+    </div>
+  );
+};
 
 const AsideApocrypha = ({ toc }) => (
   <aside>
-    {console.log(toc)}
     <nav tw="md:sticky md:h-screen md:overflow-y-auto mt-4" css={{ top: '0' }}>
       <h2
         id="toc"
