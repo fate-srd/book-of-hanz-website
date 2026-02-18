@@ -20,22 +20,52 @@ const SidebarList = ({ category, sectionTitle, toc }) => {
 
           const trimmedPath = splitPath[1];
           const absPathArray = trimmedPath.replace('.md', '').split('/');
-          const title = absPathArray[absPathArray.length - 1]
-            .replace(/-/g, ' ')
-            .replace(/_/g, '’');
-          const slug = `/apocrypha/${absPathArray[absPathArray.length - 1]}`;
+          const filename = absPathArray[absPathArray.length - 1];
+          const slug = `/apocrypha/${filename}`;
 
           if (absPathArray[0] !== category) {
             return null;
           }
 
+          const [maybeDate, ...restParts] = filename.split('-');
+          let displayTitle = filename.replace(/-/g, ' ').replace(/_/g, '’');
+
+          if (/^\d{8}$/.test(maybeDate)) {
+            const year = maybeDate.slice(0, 4);
+            const month = maybeDate.slice(4, 6);
+            const day = maybeDate.slice(6, 8);
+            const monthNames = [
+              'Jan',
+              'Feb',
+              'Mar',
+              'Apr',
+              'May',
+              'Jun',
+              'Jul',
+              'Aug',
+              'Sep',
+              'Oct',
+              'Nov',
+              'Dec',
+            ];
+            const monthIndex = parseInt(month, 10) - 1;
+            const formattedDate = `${monthNames[monthIndex]} ${day}, ${year}`;
+            const restTitle = restParts
+              .join('-')
+              .replace(/-/g, ' ')
+              .replace(/_/g, '’');
+            displayTitle = restTitle
+              ? `${formattedDate} ${restTitle}`
+              : formattedDate;
+          }
+
           return (
-            <li key={title} tw="py-2">
+            <li key={displayTitle} tw="py-2">
               <Link
                 to={slug}
                 className="text-fateBlue hover:text-fateBlue-darker hover:underline"
               >
-                {title}...
+                {displayTitle}...
               </Link>
             </li>
           );
