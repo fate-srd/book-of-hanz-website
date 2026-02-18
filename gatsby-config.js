@@ -1,4 +1,5 @@
 module.exports = {
+  trailingSlash: `never`,
   siteMetadata: {
     title: `Book of Hanz`,
     description: `The Book of Hanz unlocks the code to better Fate games than you ever imagined.`,
@@ -33,6 +34,13 @@ module.exports = {
         includeInDevelopment: false,
         autoTrack: true,
         respectDoNotTrack: true,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-fathom',
+      options: {
+        siteId: 'QXXIVNKO',
+        honorDnt: true,
       },
     },
     `gatsby-transformer-remark`,
