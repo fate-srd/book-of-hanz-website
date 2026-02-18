@@ -1,4 +1,5 @@
 module.exports = {
+  trailingSlash: `never`,
   siteMetadata: {
     title: `Book of Hanz`,
     description: `The Book of Hanz unlocks the code to better Fate games than you ever imagined.`,
