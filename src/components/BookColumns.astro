@@ -1,0 +1,17 @@
+---
+import Aside from "./Aside.astro";
+
+const { html, toc, languageURL, languageText, topLink = "fixed" } = Astro.props;
+const topClass =
+  topLink === "sticky"
+    ? "md:hidden bg-fateBlue-dark sticky text-white px-4 py-3 uppercase font-semibold text-2xl z-20 bottom-0"
+    : "md:hidden bg-fateBlue-dark fixed text-white px-4 py-3 uppercase font-semibold text-2xl z-50 bottom-0";
+---
+
+<div
+  class="bg-white text-gray-600 p-5 z-20 relative md:grid md:grid-cols-[200px_2fr] md:gap-8 md:pb-5 md:px-10 lg:grid-cols-[minmax(200px,300px)_2fr] lg:gap-16 lg:pb-10 lg:px-20"
+>
+  <Aside toc={toc} languageURL={languageURL} languageText={languageText} />
+  <main class="main-content" set:html={html} />
+</div>
+<a class={topClass} href="#toc">↑ <span class="sr-only">Back to contents</span></a>

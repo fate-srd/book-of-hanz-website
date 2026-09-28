@@ -1,0 +1,41 @@
+---
+const { posts, currentSlug } = Astro.props;
+
+const sections = [
+  { category: "TotD", sectionTitle: "Thought of the Day" },
+  { category: "fate", sectionTitle: "Fate Posts" },
+];
+---
+
+<aside>
+  <nav class="md:sticky md:h-screen md:overflow-y-auto mt-4 top-0" aria-label="Apocrypha">
+    <h2
+      id="toc"
+      class="font-semibold text-2xl mt-5 border-b border-solid border-fateGray-light pb-2"
+    >
+      Apocrypha of Hanz
+    </h2>
+    {
+      sections.map((section) => (
+        <div>
+          <h3 class="font-semibold text-xl mt-5 pb-2">{section.sectionTitle}</h3>
+          <ul class="divide-y divide-fateGray-light">
+            {posts
+              .filter((post) => post.category === section.category)
+              .map((post) => (
+                <li class="py-2">
+                  <a
+                    href={`/apocrypha/${post.slug}`}
+                    aria-current={post.slug === currentSlug ? "page" : undefined}
+                    class="text-fateBlue hover:text-fateBlue-darker hover:underline aria-[current=page]:underline"
+                  >
+                    {post.title}...
+                  </a>
+                </li>
+              ))}
+          </ul>
+        </div>
+      ))
+    }
+  </nav>
+</aside>

@@ -1,0 +1,17 @@
+---
+import Base from "../layouts/Base.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+---
+
+<Base title="Page not found">
+  <SiteHeader />
+  <div class="bg-white text-gray-600 p-5 z-20 relative md:px-10 lg:px-20">
+    <main class="main-content">
+      <h1>Page not found</h1>
+      <p class="flush">
+        Sorry, that page isn’t here.
+        <a href="/">Go home</a>.
+      </p>
+    </main>
+  </div>
+</Base>

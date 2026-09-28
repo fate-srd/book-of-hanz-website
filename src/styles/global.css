@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-fateBlue: #1b75bc;
+  --color-fateBlue-dark: #15598f;
+  --color-fateBlue-darker: #0d436d;
+  --color-fateBlue-darkest: #063255;
+  --color-fateGray-light: #ccc;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+}
+
+@layer base {
+  a {
+    @apply text-blue-500;
+  }
+}
+
+@layer components {
+  .site-bg {
+    background: url("/images/bkg.png");
+  }
+
+  .fate-bar {
+    box-shadow:
+      0px 100px 80px rgba(0, 0, 0, 0.21),
+      0px 41.7776px 33.4221px rgba(0, 0, 0, 0.150959),
+      0px 22.3363px 17.869px rgba(0, 0, 0, 0.125183),
+      0px 12.5216px 10.0172px rgba(0, 0, 0, 0.105),
+      0px 6.6501px 5.32008px rgba(0, 0, 0, 0.0848175),
+      0px 2.76726px 2.21381px rgba(0, 0, 0, 0.0590406);
+  }
+
+  .hero-card {
+    background: url("/images/hanz-pattern.png") center center repeat-x;
+    background-size: contain;
+    box-shadow:
+      0 1.1px 0.9px 0 rgba(0, 0, 0, 0.06),
+      0 2.7px 2.1px 0 rgba(0, 0, 0, 0.08),
+      0 5.1px 4px 0 rgba(0, 0, 0, 0.1),
+      0 9px 7.2px 0 rgba(0, 0, 0, 0.13),
+      0 16.9px 13.5px 0 rgba(0, 0, 0, 0.15),
+      0 40.4px 32.3px 0 rgba(0, 0, 0, 0.21);
+  }
+
+  .hero-card::after {
+    content: "";
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    left: 0.5rem;
+  }
+
+  .main-content h1 {
+    @apply text-fateBlue-dark font-bold text-2xl md:text-4xl mt-9 mb-4;
+  }
+
+  .main-content h1 + p,
+  .main-content h2 + p {
+    text-indent: 0;
+  }
+
+  .main-content h2 {
+    @apply font-semibold text-xl mt-5 mb-2;
+  }
+
+  .main-content p {
+    text-indent: 2rem;
+    @apply text-sm md:text-lg md:leading-7 md:text-justify;
+  }
+
+  .main-content p.flush {
+    text-indent: 0;
+    margin-bottom: 1rem;
+  }
+
+  .main-content ol {
+    @apply list-decimal text-lg leading-7 pl-14;
+  }
+
+  .main-content ul {
+    @apply list-disc text-lg leading-7 pl-14;
+  }
+
+  .main-content .conversation p {
+    text-indent: 0;
+    @apply mb-2;
+  }
+
+  h1 + div > div:not(.main-content) {
+    @apply mb-5;
+  }
+
+  .main-content-google-plus {
+    @apply mb-5 mt-5 pb-5;
+  }
+
+  [itemprop="audience"],
+  .plus-oners {
+    @apply text-sm;
+  }
+
+  .author-photo {
+    @apply hidden;
+  }
+
+  .post-activity {
+    @apply mb-5 pb-5 text-sm font-bold;
+  }
+
+  .post-activity a {
+    @apply font-normal;
+  }
+
+  .comments {
+    @apply mb-5 p-5 pb-2 bg-gray-100;
+  }
+
+  .comment {
+    @apply mb-5 pb-5 border-b-2 border-gray-200 text-sm;
+  }
+
+  .comment [itemprop="author"] {
+    @apply font-bold;
+  }
+
+  .comment-content {
+    @apply mt-3 text-base;
+  }
+}

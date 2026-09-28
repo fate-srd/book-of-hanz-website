@@ -1,0 +1,18 @@
+---
+import Base from "../layouts/Base.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import BookColumns from "../components/BookColumns.astro";
+import { loadBook } from "../lib/content.js";
+
+const { html, toc } = loadBook("english");
+---
+
+<Base title="Read the Book">
+  <SiteHeader />
+  <BookColumns
+    html={html}
+    toc={toc}
+    languageURL="/spanish"
+    languageText="Read in Spanish"
+  />
+</Base>

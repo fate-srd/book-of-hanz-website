@@ -1,0 +1,28 @@
+---
+import Base from "../../layouts/Base.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import AsideApocrypha from "../../components/AsideApocrypha.astro";
+import { getApocryphaList, getApocryphaPost } from "../../lib/content.js";
+
+export function getStaticPaths() {
+  return getApocryphaList().map((post) => ({
+    params: { slug: post.slug },
+  }));
+}
+
+const post = getApocryphaPost(Astro.params.slug);
+const posts = getApocryphaList();
+---
+
+<Base title="Apocrypha">
+  <SiteHeader />
+  <div
+    class="bg-white text-gray-600 p-5 z-20 relative md:grid md:grid-cols-[200px_2fr] md:gap-8 md:pb-5 md:px-10 lg:grid-cols-[minmax(200px,300px)_2fr] lg:gap-16 lg:pb-10 lg:px-20"
+  >
+    <AsideApocrypha posts={posts} currentSlug={post.slug} />
+    <main class="main-content">
+      <h1>{post.title}...</h1>
+      <div set:html={post.html} />
+    </main>
+  </div>
+</Base>

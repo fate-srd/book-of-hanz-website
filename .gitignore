@@ -1,6 +1,7 @@
 node_modules/
 .cache/
-public
+dist/
+.astro/
 .DS_Store
 .env
 # Local Netlify folder
